@@ -1,0 +1,1165 @@
+Analysis & Synthesis report for NACA
+Tue Dec  5 21:51:24 2023
+Quartus Prime Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. User-Specified and Inferred Latches
+ 11. General Register Statistics
+ 12. Registers Packed Into Inferred Megafunctions
+ 13. Registers Added for RAM Pass-Through Logic
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for IMEM:inst_2|altsyncram:mem_rtl_0|altsyncram_dg51:auto_generated
+ 16. Source assignments for SMEM:inst_6|altsyncram:mem_rtl_0|altsyncram_kfg1:auto_generated
+ 17. Parameter Settings for User Entity Instance: IMEM:inst_2
+ 18. Parameter Settings for User Entity Instance: SMEM:inst_6
+ 19. Parameter Settings for Inferred Entity Instance: IMEM:inst_2|altsyncram:mem_rtl_0
+ 20. Parameter Settings for Inferred Entity Instance: SMEM:inst_6|altsyncram:mem_rtl_0
+ 21. Parameter Settings for Inferred Entity Instance: ALU:inst_5|lpm_divide:Div0
+ 22. Parameter Settings for Inferred Entity Instance: ALU:inst_5|lpm_mult:Mult0
+ 23. Parameter Settings for Inferred Entity Instance: ALU:inst_5|lpm_divide:Mod0
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. lpm_mult Parameter Settings by Entity Instance
+ 26. Port Connectivity Checks: "GPU:inst_7"
+ 27. Port Connectivity Checks: "REG_FILE:inst_3"
+ 28. Port Connectivity Checks: "CU:inst_4"
+ 29. Port Connectivity Checks: "IMEM:inst_2"
+ 30. Port Connectivity Checks: "PC:inst_1"
+ 31. Post-Synthesis Netlist Statistics for Top Partition
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2022  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Dec  5 21:51:24 2023       ;
+; Quartus Prime Version              ; 21.1.1 Build 850 06/23/2022 SJ Lite Edition ;
+; Revision Name                      ; NACA                                        ;
+; Top-level Entity Name              ; NACA                                        ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; 5,857                                       ;
+;     Total combinational functions  ; 4,803                                       ;
+;     Dedicated logic registers      ; 1,254                                       ;
+; Total registers                    ; 1254                                        ;
+; Total pins                         ; 16                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 32,062                                      ;
+; Embedded Multiplier 9-bit elements ; 6                                           ;
+; Total PLLs                         ; 0                                           ;
+; UFM blocks                         ; 0                                           ;
+; ADC blocks                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; NACA               ; NACA               ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.3%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                           ;
++----------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                              ; Library ;
++----------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------+---------+
+; IMEM.v                           ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/IMEM.v                                             ;         ;
+; NACA.v                           ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/NACA.v                                             ;         ;
+; PC.v                             ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/PC.v                                               ;         ;
+; REG_FILE.v                       ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/REG_FILE.v                                         ;         ;
+; ALU.v                            ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/ALU.v                                              ;         ;
+; CU.v                             ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/CU.v                                               ;         ;
+; SMEM.v                           ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/SMEM.v                                             ;         ;
+; GPU.v                            ; yes             ; User Verilog HDL File                                 ; /home/egrapa/prog/NACA/GPU.v                                              ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal211.inc                   ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/aglobal211.inc        ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                       ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                       ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_dg51.tdf           ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/altsyncram_dg51.tdf                             ;         ;
+; db/NACA.ram0_IMEM_257482.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; /home/egrapa/prog/NACA/db/NACA.ram0_IMEM_257482.hdl.mif                   ;         ;
+; db/altsyncram_kfg1.tdf           ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/altsyncram_kfg1.tdf                             ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/lpm_divide.tdf        ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/abs_divider.inc       ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/sign_div_unsign.inc   ;         ;
+; db/lpm_divide_vco.tdf            ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/lpm_divide_vco.tdf                              ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/abs_divider_4dg.tdf                             ;         ;
+; db/alt_u_div_ske.tdf             ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/alt_u_div_ske.tdf                               ;         ;
+; db/add_sub_t3c.tdf               ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/add_sub_t3c.tdf                                 ;         ;
+; db/add_sub_u3c.tdf               ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/add_sub_u3c.tdf                                 ;         ;
+; db/lpm_abs_8b9.tdf               ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/lpm_abs_8b9.tdf                                 ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/lpm_mult.tdf          ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/lpm_add_sub.inc       ;         ;
+; multcore.inc                     ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/multcore.inc          ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/bypassff.inc          ;         ;
+; altshift.inc                     ; yes             ; Megafunction                                          ; /opt/intelFPGA/21.1/quartus/libraries/megafunctions/altshift.inc          ;         ;
+; db/mult_qgs.tdf                  ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/mult_qgs.tdf                                    ;         ;
+; db/lpm_divide_25o.tdf            ; yes             ; Auto-Generated Megafunction                           ; /home/egrapa/prog/NACA/db/lpm_divide_25o.tdf                              ;         ;
++----------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 5,857        ;
+;                                             ;              ;
+; Total combinational functions               ; 4803         ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 2882         ;
+;     -- 3 input functions                    ; 1677         ;
+;     -- <=2 input functions                  ; 244          ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 3541         ;
+;     -- arithmetic mode                      ; 1262         ;
+;                                             ;              ;
+; Total registers                             ; 1254         ;
+;     -- Dedicated logic registers            ; 1254         ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 16           ;
+; Total memory bits                           ; 32062        ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 6            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; CLK_50~input ;
+; Maximum fan-out                             ; 1317         ;
+; Total fan-out                               ; 21350        ;
+; Average fan-out                             ; 3.47         ;
++---------------------------------------------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                  ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                                ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |NACA                                     ; 4803 (49)           ; 1254 (0)                  ; 32062       ; 0          ; 6            ; 0       ; 3         ; 16   ; 0            ; 0          ; |NACA                                                                                                                              ; NACA            ; work         ;
+;    |ALU:inst_5|                           ; 3246 (783)          ; 0 (0)                     ; 0           ; 0          ; 6            ; 0       ; 3         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5                                                                                                                   ; ALU             ; work         ;
+;       |lpm_divide:Div0|                   ; 1215 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0                                                                                                   ; lpm_divide      ; work         ;
+;          |lpm_divide_vco:auto_generated|  ; 1215 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0|lpm_divide_vco:auto_generated                                                                     ; lpm_divide_vco  ; work         ;
+;             |abs_divider_4dg:divider|     ; 1215 (65)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0|lpm_divide_vco:auto_generated|abs_divider_4dg:divider                                             ; abs_divider_4dg ; work         ;
+;                |alt_u_div_ske:divider|    ; 1084 (1081)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0|lpm_divide_vco:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider                       ; alt_u_div_ske   ; work         ;
+;                   |add_sub_t3c:add_sub_0| ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0|lpm_divide_vco:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider|add_sub_t3c:add_sub_0 ; add_sub_t3c     ; work         ;
+;                   |add_sub_u3c:add_sub_1| ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0|lpm_divide_vco:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider|add_sub_u3c:add_sub_1 ; add_sub_u3c     ; work         ;
+;                |lpm_abs_8b9:my_abs_den|   ; 64 (64)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0|lpm_divide_vco:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_den                      ; lpm_abs_8b9     ; work         ;
+;                |lpm_abs_8b9:my_abs_num|   ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Div0|lpm_divide_vco:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_num                      ; lpm_abs_8b9     ; work         ;
+;       |lpm_divide:Mod0|                   ; 1220 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Mod0                                                                                                   ; lpm_divide      ; work         ;
+;          |lpm_divide_25o:auto_generated|  ; 1220 (0)            ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Mod0|lpm_divide_25o:auto_generated                                                                     ; lpm_divide_25o  ; work         ;
+;             |abs_divider_4dg:divider|     ; 1220 (60)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                                             ; abs_divider_4dg ; work         ;
+;                |alt_u_div_ske:divider|    ; 1115 (1115)         ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider                       ; alt_u_div_ske   ; work         ;
+;                |lpm_abs_8b9:my_abs_den|   ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_den                      ; lpm_abs_8b9     ; work         ;
+;                |lpm_abs_8b9:my_abs_num|   ; 43 (43)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|lpm_abs_8b9:my_abs_num                      ; lpm_abs_8b9     ; work         ;
+;       |lpm_mult:Mult0|                    ; 28 (0)              ; 0 (0)                     ; 0           ; 0          ; 6            ; 0       ; 3         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_mult:Mult0                                                                                                    ; lpm_mult        ; work         ;
+;          |mult_qgs:auto_generated|        ; 28 (28)             ; 0 (0)                     ; 0           ; 0          ; 6            ; 0       ; 3         ; 0    ; 0            ; 0          ; |NACA|ALU:inst_5|lpm_mult:Mult0|mult_qgs:auto_generated                                                                            ; mult_qgs        ; work         ;
+;    |CU:inst_4|                            ; 15 (15)             ; 7 (7)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|CU:inst_4                                                                                                                    ; CU              ; work         ;
+;    |IMEM:inst_2|                          ; 0 (0)               ; 0 (0)                     ; 62          ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|IMEM:inst_2                                                                                                                  ; IMEM            ; work         ;
+;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 62          ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|IMEM:inst_2|altsyncram:mem_rtl_0                                                                                             ; altsyncram      ; work         ;
+;          |altsyncram_dg51:auto_generated| ; 0 (0)               ; 0 (0)                     ; 62          ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|IMEM:inst_2|altsyncram:mem_rtl_0|altsyncram_dg51:auto_generated                                                              ; altsyncram_dg51 ; work         ;
+;    |REG_FILE:inst_3|                      ; 1454 (1454)         ; 1162 (1162)               ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|REG_FILE:inst_3                                                                                                              ; REG_FILE        ; work         ;
+;    |SMEM:inst_6|                          ; 39 (39)             ; 85 (85)                   ; 32000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|SMEM:inst_6                                                                                                                  ; SMEM            ; work         ;
+;       |altsyncram:mem_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 32000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|SMEM:inst_6|altsyncram:mem_rtl_0                                                                                             ; altsyncram      ; work         ;
+;          |altsyncram_kfg1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32000       ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |NACA|SMEM:inst_6|altsyncram:mem_rtl_0|altsyncram_kfg1:auto_generated                                                              ; altsyncram_kfg1 ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                            ;
++----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------+
+; Name                                                                       ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                              ;
++----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------+
+; IMEM:inst_2|altsyncram:mem_rtl_0|altsyncram_dg51:auto_generated|ALTSYNCRAM ; AUTO ; ROM              ; 1000         ; 32           ; --           ; --           ; 32000 ; db/NACA.ram0_IMEM_257482.hdl.mif ;
+; SMEM:inst_6|altsyncram:mem_rtl_0|altsyncram_kfg1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1000         ; 32           ; 1000         ; 32           ; 32000 ; None                             ;
++----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+----------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 3           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 6           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 1           ;
+; Mixed Sign Embedded Multipliers       ; 2           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; LED$latch                                           ; LED                 ; yes                    ;
+; ALU:inst_5|write_back[0]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[1]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[2]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[3]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[4]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[5]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[6]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[7]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[8]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[9]                            ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[10]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[11]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[12]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[13]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[14]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[15]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[16]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[17]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[18]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[19]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[20]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[21]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[22]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[23]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[24]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[25]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[26]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[27]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[28]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[29]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[30]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; ALU:inst_5|write_back[31]                           ; ALU:inst_5|Mux32    ; yes                    ;
+; Number of user-specified and inferred latches = 33  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1254  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 999   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions           ;
++-------------------------+-----------------------+------+
+; Register Name           ; Megafunction          ; Type ;
++-------------------------+-----------------------+------+
+; IMEM:inst_2|temp[0..30] ; IMEM:inst_2|mem_rtl_0 ; RAM  ;
++-------------------------+-----------------------+------+
+
+
++----------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic               ;
++----------------------------------+-----------------------+
+; Register Name                    ; RAM Name              ;
++----------------------------------+-----------------------+
+; SMEM:inst_6|mem_rtl_0_bypass[0]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[1]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[2]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[3]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[4]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[5]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[6]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[7]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[8]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[9]  ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[10] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[11] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[12] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[13] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[14] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[15] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[16] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[17] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[18] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[19] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[20] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[21] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[22] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[23] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[24] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[25] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[26] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[27] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[28] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[29] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[30] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[31] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[32] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[33] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[34] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[35] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[36] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[37] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[38] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[39] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[40] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[41] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[42] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[43] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[44] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[45] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[46] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[47] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[48] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[49] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[50] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[51] ; SMEM:inst_6|mem_rtl_0 ;
+; SMEM:inst_6|mem_rtl_0_bypass[52] ; SMEM:inst_6|mem_rtl_0 ;
++----------------------------------+-----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |NACA|REG_FILE:inst_3|regs[14][25]  ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |NACA|REG_FILE:inst_3|data_reg3[25] ;
+; 32:1               ; 3 bits    ; 63 LEs        ; 24 LEs               ; 39 LEs                 ; Yes        ; |NACA|CU:inst_4|immediate           ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 40 LEs               ; 44 LEs                 ; Yes        ; |NACA|CU:inst_4|ALU_op[3]           ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |NACA|REG_FILE:inst_3|data_reg2[17] ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 72 LEs               ; 16 LEs                 ; No         ; |NACA|ALU:inst_5|Mux17              ;
+; 17:1               ; 8 bits    ; 88 LEs        ; 72 LEs               ; 16 LEs                 ; No         ; |NACA|ALU:inst_5|Mux9               ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 40 LEs               ; 8 LEs                  ; No         ; |NACA|ALU:inst_5|Mux26              ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 40 LEs               ; 8 LEs                  ; No         ; |NACA|ALU:inst_5|Mux8               ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 22 LEs               ; 2 LEs                  ; No         ; |NACA|ALU:inst_5|Mux30              ;
+; 19:1               ; 2 bits    ; 24 LEs        ; 20 LEs               ; 4 LEs                  ; No         ; |NACA|ALU:inst_5|Mux4               ;
+; 20:1               ; 2 bits    ; 26 LEs        ; 20 LEs               ; 6 LEs                  ; No         ; |NACA|ALU:inst_5|Mux1               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Source assignments for IMEM:inst_2|altsyncram:mem_rtl_0|altsyncram_dg51:auto_generated ;
++---------------------------------+--------------------+------+--------------------------+
+; Assignment                      ; Value              ; From ; To                       ;
++---------------------------------+--------------------+------+--------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                        ;
++---------------------------------+--------------------+------+--------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Source assignments for SMEM:inst_6|altsyncram:mem_rtl_0|altsyncram_kfg1:auto_generated ;
++---------------------------------+--------------------+------+--------------------------+
+; Assignment                      ; Value              ; From ; To                       ;
++---------------------------------+--------------------+------+--------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                        ;
++---------------------------------+--------------------+------+--------------------------+
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: IMEM:inst_2 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; MEM_WIDTH      ; 1000  ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SMEM:inst_6 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; MEM_WIDTH      ; 1000  ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: IMEM:inst_2|altsyncram:mem_rtl_0      ;
++------------------------------------+----------------------------------+----------------+
+; Parameter Name                     ; Value                            ; Type           ;
++------------------------------------+----------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                               ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                              ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                               ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                              ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                ; Untyped        ;
+; OPERATION_MODE                     ; ROM                              ; Untyped        ;
+; WIDTH_A                            ; 32                               ; Untyped        ;
+; WIDTHAD_A                          ; 10                               ; Untyped        ;
+; NUMWORDS_A                         ; 1000                             ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                     ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                             ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                             ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                             ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                             ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                             ; Untyped        ;
+; WIDTH_B                            ; 1                                ; Untyped        ;
+; WIDTHAD_B                          ; 1                                ; Untyped        ;
+; NUMWORDS_B                         ; 1                                ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                           ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                           ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                           ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                           ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                     ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                           ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                             ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                             ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                             ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                             ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                             ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                             ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                             ; Untyped        ;
+; BYTE_SIZE                          ; 8                                ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                        ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ             ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ             ; Untyped        ;
+; INIT_FILE                          ; db/NACA.ram0_IMEM_257482.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                           ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                           ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                           ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                           ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                           ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                  ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                  ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                            ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                            ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                ; Untyped        ;
+; DEVICE_FAMILY                      ; MAX 10                           ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_dg51                  ; Untyped        ;
++------------------------------------+----------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: SMEM:inst_6|altsyncram:mem_rtl_0 ;
++------------------------------------+----------------------+-----------------------+
+; Parameter Name                     ; Value                ; Type                  ;
++------------------------------------+----------------------+-----------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped               ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY            ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY          ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE          ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE        ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped               ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped               ;
+; WIDTH_A                            ; 32                   ; Untyped               ;
+; WIDTHAD_A                          ; 10                   ; Untyped               ;
+; NUMWORDS_A                         ; 1000                 ; Untyped               ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped               ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped               ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped               ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped               ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped               ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped               ;
+; WIDTH_B                            ; 32                   ; Untyped               ;
+; WIDTHAD_B                          ; 10                   ; Untyped               ;
+; NUMWORDS_B                         ; 1000                 ; Untyped               ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped               ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped               ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped               ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped               ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped               ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped               ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped               ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped               ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped               ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped               ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped               ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped               ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped               ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped               ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped               ;
+; BYTE_SIZE                          ; 8                    ; Untyped               ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped               ;
+; INIT_FILE                          ; UNUSED               ; Untyped               ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped               ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped               ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped               ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped               ;
+; ENABLE_ECC                         ; FALSE                ; Untyped               ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped               ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped               ;
+; DEVICE_FAMILY                      ; MAX 10               ; Untyped               ;
+; CBXI_PARAMETER                     ; altsyncram_kfg1      ; Untyped               ;
++------------------------------------+----------------------+-----------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ALU:inst_5|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                           ;
+; LPM_WIDTHD             ; 32             ; Untyped                           ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                           ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vco ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ALU:inst_5|lpm_mult:Mult0      ;
++------------------------------------------------+----------+---------------------+
+; Parameter Name                                 ; Value    ; Type                ;
++------------------------------------------------+----------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 32       ; Untyped             ;
+; LPM_WIDTHB                                     ; 32       ; Untyped             ;
+; LPM_WIDTHP                                     ; 64       ; Untyped             ;
+; LPM_WIDTHR                                     ; 64       ; Untyped             ;
+; LPM_WIDTHS                                     ; 1        ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED   ; Untyped             ;
+; LPM_PIPELINE                                   ; 0        ; Untyped             ;
+; LATENCY                                        ; 0        ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped             ;
+; USE_EAB                                        ; OFF      ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5        ; Untyped             ;
+; DEVICE_FAMILY                                  ; MAX 10   ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_qgs ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped             ;
++------------------------------------------------+----------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: ALU:inst_5|lpm_divide:Mod0 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                           ;
+; LPM_WIDTHD             ; 32             ; Untyped                           ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                           ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                             ;
++-------------------------------------------+----------------------------------+
+; Name                                      ; Value                            ;
++-------------------------------------------+----------------------------------+
+; Number of entity instances                ; 2                                ;
+; Entity Instance                           ; IMEM:inst_2|altsyncram:mem_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                              ;
+;     -- WIDTH_A                            ; 32                               ;
+;     -- NUMWORDS_A                         ; 1000                             ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                     ;
+;     -- WIDTH_B                            ; 1                                ;
+;     -- NUMWORDS_B                         ; 1                                ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                           ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                     ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                             ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                        ;
+; Entity Instance                           ; SMEM:inst_6|altsyncram:mem_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                        ;
+;     -- WIDTH_A                            ; 32                               ;
+;     -- NUMWORDS_A                         ; 1000                             ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                     ;
+;     -- WIDTH_B                            ; 32                               ;
+;     -- NUMWORDS_B                         ; 1000                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                           ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                     ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                             ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                         ;
++-------------------------------------------+----------------------------------+
+
+
++-------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                    ;
++---------------------------------------+---------------------------+
+; Name                                  ; Value                     ;
++---------------------------------------+---------------------------+
+; Number of entity instances            ; 1                         ;
+; Entity Instance                       ; ALU:inst_5|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 32                        ;
+;     -- LPM_WIDTHB                     ; 32                        ;
+;     -- LPM_WIDTHP                     ; 64                        ;
+;     -- LPM_REPRESENTATION             ; SIGNED                    ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                        ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                        ;
+;     -- USE_EAB                        ; OFF                       ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                      ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                        ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                        ;
++---------------------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "GPU:inst_7"                                                                                                                                                            ;
++-------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                                                               ;
++-------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; VGA_R ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (4 bits) it drives.  The 3 most-significant bit(s) in the port expression will be connected to GND. ;
+; VGA_B ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (4 bits) it drives.  The 3 most-significant bit(s) in the port expression will be connected to GND. ;
+; VGA_G ; Output ; Warning  ; Output or bidir port (1 bits) is smaller than the port expression (4 bits) it drives.  The 3 most-significant bit(s) in the port expression will be connected to GND. ;
++-------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "REG_FILE:inst_3"                                                                                                                              ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                                       ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+; comp ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                           ;
+; mpc  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "mpc[31..1]" will be connected to GND. ;
++------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CU:inst_4"                                                                                                                                      ;
++--------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                                                                                        ;
++--------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; opcode ; Input ; Warning  ; Input port expression (5 bits) is smaller than the input port (6 bits) it drives.  Extra input bit(s) "opcode[5..5]" will be connected to GND. ;
++--------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "IMEM:inst_2"                                                                                                                                  ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                        ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; addr ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "addr[31..1]" will be connected to GND. ;
+; we   ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.   ;
++------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PC:inst_1"                                                                                                              ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                 ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
+; run  ; Input  ; Info     ; Stuck at GND                                                                                                            ;
+; pc   ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (1 bits) it drives; bit(s) "pc[31..1]" have no fanouts ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 16                          ;
+; cycloneiii_ff         ; 1254                        ;
+;     ENA               ; 999                         ;
+;     plain             ; 255                         ;
+; cycloneiii_lcell_comb ; 4803                        ;
+;     arith             ; 1262                        ;
+;         2 data inputs ; 1                           ;
+;         3 data inputs ; 1261                        ;
+;     normal            ; 3541                        ;
+;         0 data inputs ; 61                          ;
+;         2 data inputs ; 182                         ;
+;         3 data inputs ; 416                         ;
+;         4 data inputs ; 2882                        ;
+; cycloneiii_mac_mult   ; 3                           ;
+; cycloneiii_mac_out    ; 3                           ;
+; cycloneiii_ram_block  ; 63                          ;
+;                       ;                             ;
+; Max LUT depth         ; 142.50                      ;
+; Average LUT depth     ; 72.68                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 21.1.1 Build 850 06/23/2022 SJ Lite Edition
+    Info: Processing started: Tue Dec  5 21:51:14 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off NACA -c NACA
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file IMEM.v
+    Info (12023): Found entity 1: IMEM File: /home/egrapa/prog/NACA/IMEM.v Line: 1
+Warning (10275): Verilog HDL Module Instantiation warning at NACA.v(34): ignored dangling comma in List of Port Connections File: /home/egrapa/prog/NACA/NACA.v Line: 34
+Info (12021): Found 1 design units, including 1 entities, in source file NACA.v
+    Info (12023): Found entity 1: NACA File: /home/egrapa/prog/NACA/NACA.v Line: 1
+Warning (10229): Verilog HDL Expression warning at PC.v(19): truncated literal to match 1 bits File: /home/egrapa/prog/NACA/PC.v Line: 19
+Info (12021): Found 1 design units, including 1 entities, in source file PC.v
+    Info (12023): Found entity 1: PC File: /home/egrapa/prog/NACA/PC.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file REG_FILE.v
+    Info (12023): Found entity 1: REG_FILE File: /home/egrapa/prog/NACA/REG_FILE.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ALU.v
+    Info (12023): Found entity 1: ALU File: /home/egrapa/prog/NACA/ALU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file CU.v
+    Info (12023): Found entity 1: CU File: /home/egrapa/prog/NACA/CU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file SMEM.v
+    Info (12023): Found entity 1: SMEM File: /home/egrapa/prog/NACA/SMEM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file GPU.v
+    Info (12023): Found entity 1: GPU File: /home/egrapa/prog/NACA/GPU.v Line: 1
+Info (12127): Elaborating entity "NACA" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at NACA.v(39): truncated value with size 6 to match size of target (5) File: /home/egrapa/prog/NACA/NACA.v Line: 39
+Warning (10762): Verilog HDL Case Statement warning at NACA.v(107): can't check case statement for completeness because the case expression has too many possible states File: /home/egrapa/prog/NACA/NACA.v Line: 107
+Warning (10270): Verilog HDL Case Statement warning at NACA.v(107): incomplete case statement has no default case item File: /home/egrapa/prog/NACA/NACA.v Line: 107
+Warning (10240): Verilog HDL Always Construct warning at NACA.v(103): inferring latch(es) for variable "RUN", which holds its previous value in one or more paths through the always construct File: /home/egrapa/prog/NACA/NACA.v Line: 103
+Warning (10240): Verilog HDL Always Construct warning at NACA.v(103): inferring latch(es) for variable "LED", which holds its previous value in one or more paths through the always construct File: /home/egrapa/prog/NACA/NACA.v Line: 103
+Info (10041): Inferred latch for "LED" at NACA.v(103) File: /home/egrapa/prog/NACA/NACA.v Line: 103
+Info (10041): Inferred latch for "RUN" at NACA.v(103) File: /home/egrapa/prog/NACA/NACA.v Line: 103
+Info (12128): Elaborating entity "PC" for hierarchy "PC:inst_1" File: /home/egrapa/prog/NACA/NACA.v Line: 29
+Warning (10230): Verilog HDL assignment warning at PC.v(17): truncated value with size 32 to match size of target (2) File: /home/egrapa/prog/NACA/PC.v Line: 17
+Warning (10230): Verilog HDL assignment warning at PC.v(18): truncated value with size 32 to match size of target (2) File: /home/egrapa/prog/NACA/PC.v Line: 18
+Warning (10272): Verilog HDL Case Statement warning at PC.v(19): case item expression covers a value already covered by a previous case item File: /home/egrapa/prog/NACA/PC.v Line: 19
+Info (12128): Elaborating entity "IMEM" for hierarchy "IMEM:inst_2" File: /home/egrapa/prog/NACA/NACA.v Line: 34
+Warning (10030): Net "mem.data_a" at IMEM.v(9) has no driver or initial value, using a default initial value '0' File: /home/egrapa/prog/NACA/IMEM.v Line: 9
+Warning (10030): Net "mem.waddr_a" at IMEM.v(9) has no driver or initial value, using a default initial value '0' File: /home/egrapa/prog/NACA/IMEM.v Line: 9
+Warning (10030): Net "mem.we_a" at IMEM.v(9) has no driver or initial value, using a default initial value '0' File: /home/egrapa/prog/NACA/IMEM.v Line: 9
+Info (12128): Elaborating entity "CU" for hierarchy "CU:inst_4" File: /home/egrapa/prog/NACA/NACA.v Line: 55
+Info (12128): Elaborating entity "REG_FILE" for hierarchy "REG_FILE:inst_3" File: /home/egrapa/prog/NACA/NACA.v Line: 85
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:inst_5" File: /home/egrapa/prog/NACA/NACA.v Line: 99
+Warning (10764): Verilog HDL warning at ALU.v(19): converting signed shift amount to unsigned File: /home/egrapa/prog/NACA/ALU.v Line: 19
+Warning (10764): Verilog HDL warning at ALU.v(20): converting signed shift amount to unsigned File: /home/egrapa/prog/NACA/ALU.v Line: 20
+Warning (10270): Verilog HDL Case Statement warning at ALU.v(9): incomplete case statement has no default case item File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(9): inferring latch(es) for variable "write_back", which holds its previous value in one or more paths through the always construct File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[0]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[1]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[2]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[3]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[4]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[5]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[6]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[7]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[8]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[9]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[10]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[11]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[12]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[13]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[14]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[15]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[16]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[17]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[18]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[19]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[20]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[21]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[22]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[23]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[24]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[25]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[26]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[27]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[28]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[29]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[30]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (10041): Inferred latch for "write_back[31]" at ALU.v(9) File: /home/egrapa/prog/NACA/ALU.v Line: 9
+Info (12128): Elaborating entity "SMEM" for hierarchy "SMEM:inst_6" File: /home/egrapa/prog/NACA/NACA.v Line: 130
+Info (12128): Elaborating entity "GPU" for hierarchy "GPU:inst_7" File: /home/egrapa/prog/NACA/NACA.v Line: 148
+Warning (10034): Output port "VGA_R" at GPU.v(6) has no driver File: /home/egrapa/prog/NACA/GPU.v Line: 6
+Warning (10034): Output port "VGA_B" at GPU.v(7) has no driver File: /home/egrapa/prog/NACA/GPU.v Line: 7
+Warning (10034): Output port "VGA_G" at GPU.v(8) has no driver File: /home/egrapa/prog/NACA/GPU.v Line: 8
+Warning (10034): Output port "v_sync" at GPU.v(9) has no driver File: /home/egrapa/prog/NACA/GPU.v Line: 9
+Warning (10034): Output port "h_sync" at GPU.v(11) has no driver File: /home/egrapa/prog/NACA/GPU.v Line: 11
+Critical Warning (127005): Memory depth (1024) in the design file differs from memory depth (1000) in the Memory Initialization File "/home/egrapa/prog/NACA/db/NACA.ram0_IMEM_257482.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "/home/egrapa/prog/NACA/db/NACA.ram0_IMEM_257482.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (276020): Inferred RAM node "SMEM:inst_6|mem_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "IMEM:inst_2|mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1000
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_A set to NONE
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/NACA.ram0_IMEM_257482.hdl.mif
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "SMEM:inst_6|mem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1000
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1000
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (278001): Inferred 3 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ALU:inst_5|Div0" File: /home/egrapa/prog/NACA/ALU.v Line: 12
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "ALU:inst_5|Mult0" File: /home/egrapa/prog/NACA/ALU.v Line: 13
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "ALU:inst_5|Mod0" File: /home/egrapa/prog/NACA/ALU.v Line: 14
+Info (12130): Elaborated megafunction instantiation "IMEM:inst_2|altsyncram:mem_rtl_0"
+Info (12133): Instantiated megafunction "IMEM:inst_2|altsyncram:mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1000"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/NACA.ram0_IMEM_257482.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_dg51.tdf
+    Info (12023): Found entity 1: altsyncram_dg51 File: /home/egrapa/prog/NACA/db/altsyncram_dg51.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "SMEM:inst_6|altsyncram:mem_rtl_0"
+Info (12133): Instantiated megafunction "SMEM:inst_6|altsyncram:mem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1000"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1000"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kfg1.tdf
+    Info (12023): Found entity 1: altsyncram_kfg1 File: /home/egrapa/prog/NACA/db/altsyncram_kfg1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "ALU:inst_5|lpm_divide:Div0" File: /home/egrapa/prog/NACA/ALU.v Line: 12
+Info (12133): Instantiated megafunction "ALU:inst_5|lpm_divide:Div0" with the following parameter: File: /home/egrapa/prog/NACA/ALU.v Line: 12
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_vco.tdf
+    Info (12023): Found entity 1: lpm_divide_vco File: /home/egrapa/prog/NACA/db/lpm_divide_vco.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg File: /home/egrapa/prog/NACA/db/abs_divider_4dg.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ske.tdf
+    Info (12023): Found entity 1: alt_u_div_ske File: /home/egrapa/prog/NACA/db/alt_u_div_ske.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_t3c.tdf
+    Info (12023): Found entity 1: add_sub_t3c File: /home/egrapa/prog/NACA/db/add_sub_t3c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_u3c.tdf
+    Info (12023): Found entity 1: add_sub_u3c File: /home/egrapa/prog/NACA/db/add_sub_u3c.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_8b9.tdf
+    Info (12023): Found entity 1: lpm_abs_8b9 File: /home/egrapa/prog/NACA/db/lpm_abs_8b9.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "ALU:inst_5|lpm_mult:Mult0" File: /home/egrapa/prog/NACA/ALU.v Line: 13
+Info (12133): Instantiated megafunction "ALU:inst_5|lpm_mult:Mult0" with the following parameter: File: /home/egrapa/prog/NACA/ALU.v Line: 13
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "32"
+    Info (12134): Parameter "LPM_WIDTHP" = "64"
+    Info (12134): Parameter "LPM_WIDTHR" = "64"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_qgs.tdf
+    Info (12023): Found entity 1: mult_qgs File: /home/egrapa/prog/NACA/db/mult_qgs.tdf Line: 31
+Info (12130): Elaborated megafunction instantiation "ALU:inst_5|lpm_divide:Mod0" File: /home/egrapa/prog/NACA/ALU.v Line: 14
+Info (12133): Instantiated megafunction "ALU:inst_5|lpm_divide:Mod0" with the following parameter: File: /home/egrapa/prog/NACA/ALU.v Line: 14
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_25o.tdf
+    Info (12023): Found entity 1: lpm_divide_25o File: /home/egrapa/prog/NACA/db/lpm_divide_25o.tdf Line: 25
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "IMEM:inst_2|altsyncram:mem_rtl_0|altsyncram_dg51:auto_generated|ram_block1a31" File: /home/egrapa/prog/NACA/db/altsyncram_dg51.tdf Line: 686
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following DSP element node(s):
+        Warning (14320): Synthesized away node "ALU:inst_5|lpm_mult:Mult0|mult_qgs:auto_generated|mac_mult7" File: /home/egrapa/prog/NACA/db/mult_qgs.tdf Line: 67
+        Warning (14320): Synthesized away node "ALU:inst_5|lpm_mult:Mult0|mult_qgs:auto_generated|mac_out8" File: /home/egrapa/prog/NACA/db/mult_qgs.tdf Line: 91
+Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13014): Ignored 208 buffer(s)
+    Info (13016): Ignored 124 CARRY_SUM buffer(s)
+    Info (13019): Ignored 84 SOFT buffer(s)
+Warning (13012): Latch LED$latch has unsafe behavior File: /home/egrapa/prog/NACA/NACA.v Line: 103
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|syscode[0] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[0] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[2] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[1] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[2] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[2] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[3] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[4] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[5] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[6] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[7] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[8] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[8] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[9] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[9] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[10] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[10] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[11] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[11] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[12] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[12] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[13] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[13] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[14] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[14] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[15] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[15] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[16] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[16] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[17] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[17] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[18] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[18] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[19] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[19] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[20] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[20] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[21] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[21] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[22] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[22] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[23] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal REG_FILE:inst_3|data_reg2[23] File: /home/egrapa/prog/NACA/REG_FILE.v Line: 39
+Warning (13012): Latch ALU:inst_5|write_back[24] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[25] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[26] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[27] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[28] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[29] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[30] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13012): Latch ALU:inst_5|write_back[31] has unsafe behavior File: /home/egrapa/prog/NACA/ALU.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal CU:inst_4|ALU_op[3] File: /home/egrapa/prog/NACA/CU.v Line: 9
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 3
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 3
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 3
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 3
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 4
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 4
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 4
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 4
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 5
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 5
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 5
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 5
+    Warning (13410): Pin "VGA_HS" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 6
+    Warning (13410): Pin "VGA_VS" is stuck at GND File: /home/egrapa/prog/NACA/NACA.v Line: 7
+Info (286030): Timing-Driven Synthesis is running
+Info (17036): Removed 9 MSB VCC or GND address nodes from RAM block "IMEM:inst_2|altsyncram:mem_rtl_0|altsyncram_dg51:auto_generated|ALTSYNCRAM" File: /home/egrapa/prog/NACA/db/altsyncram_dg51.tdf Line: 581
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 5975 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 15 output pins
+    Info (21061): Implemented 5890 logic cells
+    Info (21064): Implemented 63 RAM segments
+    Info (21062): Implemented 6 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 115 warnings
+    Info: Peak virtual memory: 479 megabytes
+    Info: Processing ended: Tue Dec  5 21:51:24 2023
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:17
+
+
